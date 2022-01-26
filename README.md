@@ -56,7 +56,7 @@
 
          User findById( String id );
          
-         List<User> all();
+         List<User> getAll();
 
          void deleteById( String id );
 
@@ -98,7 +98,7 @@ public class UserController {
 
 
 	    @GetMapping
-	    public ResponseEntity<List<User>> all() {
+	    public ResponseEntity<List<User>> getAll() {
 	        //TODO implement this method using UserService
 	        return null;
 	    }
@@ -141,7 +141,6 @@ public class UserController {
 	- status ( TODO, DOING, REVIEW and DONE )
 	- assignedTo
 	- dueDate
-	- created 
 3. Create a new package called ***data*** and inside define your ***Task*** data object with at least the following fields:
 	- id
 	- name
@@ -158,7 +157,7 @@ public class UserController {
 
         Task findById( String id );
         
-        List<Task> all();
+        List<Task> getAll();
 
         boolean deleteById( String id );
 
