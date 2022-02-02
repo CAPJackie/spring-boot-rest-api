@@ -60,7 +60,7 @@
 
          void deleteById( String id );
 
-         User update( User user, String userId );
+         User update( UserDto userDto, String userId );
      }  
 14. Create an implementation of the ***UserService*** using a HashMap data structure inside.
 15. Make your service implementation ***UserServiceHashMap*** injectable using the ***@Service*** annotation.
@@ -161,7 +161,7 @@ public class UserController {
 
         boolean deleteById( String id );
 
-        Task update( Task task, String id );
+        Task update( TaskDto taskDto, String id );
     }
     ```
 5. Create an implementation of the ***TaskService*** using a ***HashMap*** data structure inside.
