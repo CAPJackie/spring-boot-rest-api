@@ -22,15 +22,13 @@
 
  1. Create a new project using the Spring Initializr .
  2. Use either **Java** or **Kotlin** as programming language.
- 3. Use **Gradle** as project option (if your computer is slow then use
-    Maven).
- 4. Add Spring Web dependency before generating the project.
+ 3. Use **Gradle** as project option.
+ 4. Add Spring Web dependency.
  5. Use latest Spring Boot version (make sure your selection doesn't
-    contain SNAPSHOT or M1 (those are probably not as stable as the rest).
+    contain SNAPSHOT or M1 (those are not as stable as the rest).
  6. Click on generate.
- 7. Go to your Github  account.
  8. Create a new public repo, name it as you like.
- 9. Commit/push the files generated in 7.
+ 9. Commit/push the files generated.
  10. Open the project on favorite editor (IntelliJ IDEA is highly
      recommended throughout this course).
  11. Create a new package called ***dto*** and inside define your ***UserDto***
@@ -66,67 +64,42 @@
 15. Make your service implementation ***UserServiceHashMap*** injectable using the ***@Service*** annotation.
 16. Create a new package called ***controller*** and create a new class ***UserController*** inside.
 17. Annotate your ***UserController*** so it becomes a ***REST*** Controller:
-
-    ```java
-     @RestController
-     @RequestMapping( "/v1/user" )
-     public class UserController
-     {
-     }  
 18. Inject your ***UserService*** implementation inside the ***UserController*** via the constructor:
-    ```java
-     @RestController
-     @RequestMapping( "/v1/user" )
-     public class UserController {
-	     private final UserService userService;
-
-		 public UserController(@Autowired UserService userService) {
-			 this.userService = userService;
-		 }
-     }  
 19.  Implement all the endpoints needed to interact with you  _UserService_. Use the following method signatures to help you achieve the Level 2 RESTFUL Maturity:
    ```java
-@RestController
-@RequestMapping( "/v1/user" )
-public class UserController {
-  
-	    private final UserService userService;
-
-	    public UserController(@Autowired UserService userService ) {
-	        this.userService = userService;
-	    }
+    private final UserService userService;
 
 
-	    @GetMapping
-	    public ResponseEntity<List<User>> getAll() {
-	        //TODO implement this method using UserService
-	        return null;
-	    }
-	   
-	    @GetMapping( "/{id}" )
-	    public ResponseEntity<User> findById( @PathVariable String id ) {
-	       //TODO implement this method using UserService
-	       return null;
-	    }
-	   
-	   
-	    @PostMapping
-	    public ResponseEntity<User> create( @RequestBody UserDto userDto ) {
-	         //TODO implement this method using UserService
-	         return null;
-	    }
-	   
-	    @PutMapping( "/{id}" )
-	    public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id ) {
-	         //TODO implement this method using UserService
-	         return null;
-	    }
+    @GetMapping
+    public ResponseEntity<List<User>> getAll() {
+        //TODO implement this method using UserService
+        return null;
+    }
+   
+    @GetMapping( "/{id}" )
+    public ResponseEntity<User> findById( @PathVariable String id ) {
+       //TODO implement this method using UserService
+       return null;
+    }
+   
+   
+    @PostMapping
+    public ResponseEntity<User> create( @RequestBody UserDto userDto ) {
+         //TODO implement this method using UserService
+         return null;
+    }
+   
+    @PutMapping( "/{id}" )
+    public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id ) {
+         //TODO implement this method using UserService
+         return null;
+    }
 
-	    @DeleteMapping( "/{id}" )
-	    public ResponseEntity<Boolean> delete( @PathVariable String id ) {
-	         //TODO implement this method using UserService
-	        return null;      
-	    }
+    @DeleteMapping( "/{id}" )
+    public ResponseEntity<Boolean> delete( @PathVariable String id ) {
+         //TODO implement this method using UserService
+        return null;      
+    }
   }
  ```
 
@@ -134,7 +107,8 @@ public class UserController {
 21. Download and install [Insomnia](https://insomnia.rest/download) and test ALL the endpoints of your API.
 
 ## Part 2: Implementing the Tasks Microservice RESTFUL API
-1. Follow the previous part 10 first steps
+
+1. Follow the previous part steps
 2. Create a new package called ***dto*** and inside define your ***TaskDto*** object with at least the following fields:
 	- name
 	- description
