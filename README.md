@@ -7,8 +7,6 @@
  - Implement a Level 2 Tasks RESTFUL API Microservice.
  - User dependencies injections to create a decoupled architecture.
 
-# Growth Mindset
-"Individuals who believe their talents can be developed (through hard work, good strategies, and input from others) have a growth mindset. They tend to achieve more than those with a more fixed mindset (those who believe their talents are innate gifts)" What Having a "Growth Mindset" Actually means - Harvard Business Review
 # MaIn Topics
 
  - Microservices.
@@ -17,7 +15,6 @@
  - Dependencies Injection.
 
 # Codelab 🤹🏽
-🗣️ "I hear and I forget I see and I remember I do and I understand." Confucius
 ## Part 1: Implementing the Users Microservice RESTFUL API
 
  1. Create a new project using the Spring Initializr .
@@ -34,31 +31,32 @@
  11. Create a new package called ***dto*** and inside define your ***UserDto***
      object with at least the following fields:
 
+       - id
        - name
        - email
        - lastName
+       - createdAt
 
-12. Create a new package called ***data*** and inside define your ***User*** data object with at least the following fields (Types don't matter yet, just be sure both DTO classes and Data classes types are consistent enough): 
-	- id
+12. Create a new package called ***model*** and inside define your ***User*** model object with at least the following fields (Types don't matter yet, just be sure both DTO classes and Data classes types are consistent enough): 
+
 	- name
 	- email
 	- lastName
-	- createdAt
 	
 13. Create a new package called ***service*** and inside create the following interface:
 
     ```java
      public interface UserService
      {
-         User create( User user );
+         UserDto create( User user );
 
-         User findById( String id );
+         UserDto findById( String id );
          
-         List<User> getAll();
+         List<UserDto> getAll();
 
          void deleteById( String id );
 
-         User update( UserDto userDto, String userId );
+         UserDto update( User user, String userId );
      }  
 14. Create an implementation of the ***UserService*** using a HashMap data structure inside.
 15. Make your service implementation ***UserServiceHashMap*** injectable using the ***@Service*** annotation.
@@ -71,26 +69,26 @@
 
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
+    public ResponseEntity<List<UserDto>> getAll() {
         //TODO implement this method using UserService
         return null;
     }
    
     @GetMapping( "/{id}" )
-    public ResponseEntity<User> findById( @PathVariable String id ) {
+    public ResponseEntity<UserDto> findById( @PathVariable String id ) {
        //TODO implement this method using UserService
        return null;
     }
    
    
     @PostMapping
-    public ResponseEntity<User> create( @RequestBody UserDto userDto ) {
+    public ResponseEntity<UserDto> create( @RequestBody UserDto userDto ) {
          //TODO implement this method using UserService
          return null;
     }
    
     @PutMapping( "/{id}" )
-    public ResponseEntity<User> update( @RequestBody UserDto userDto, @PathVariable String id ) {
+    public ResponseEntity<UserDto> update( @RequestBody User user, @PathVariable String id ) {
          //TODO implement this method using UserService
          return null;
     }
@@ -110,32 +108,32 @@
 
 1. Follow the previous part steps
 2. Create a new package called ***dto*** and inside define your ***TaskDto*** object with at least the following fields:
+        - id
 	- name
 	- description
 	- status ( TODO, DOING, REVIEW and DONE )
 	- assignedTo
 	- dueDate
-3. Create a new package called ***data*** and inside define your ***Task*** data object with at least the following fields:
-	- id
+	- createdAt
+3. Create a new package called ***model*** and inside define your ***Task*** model object with at least the following fields:
 	- name
 	- description
 	- status ( TODO, DOING, REVIEW and DONE )
 	- assignedTo
 	- dueDate
-	- created
 4. Create a new package called ***service*** and inside create the following interface:
 	```java
 	public interface TaskService
     {
-        Task create( Task task );
+        TaskDto create( Task task );
 
-        Task findById( String id );
+        TaskDto findById( String id );
         
-        List<Task> getAll();
+        List<TaskDto> getAll();
 
         boolean deleteById( String id );
 
-        Task update( TaskDto taskDto, String id );
+        TaskDto update( Task task, String id );
     }
     ```
 5. Create an implementation of the ***TaskService*** using a ***HashMap*** data structure inside.
