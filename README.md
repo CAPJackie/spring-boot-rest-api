@@ -37,26 +37,23 @@
        - lastName
        - createdAt
 
-12. Create a new package called ***model*** and inside define your ***User*** model object with at least the following fields (Types don't matter yet, just be sure both DTO classes and Data classes types are consistent enough): 
+12. Create a new package called ***entities*** and inside define your ***User*** entity object with the same fields as the dto version (Types don't matter yet, just be sure both DTO classes and Data classes types are consistent enough): 
 
-	- name
-	- email
-	- lastName
 	
 13. Create a new package called ***service*** and inside create the following interface:
 
     ```java
      public interface UserService
      {
-         UserDto create( User user );
+         User create( User user );
 
-         UserDto findById( String id );
+         User findById( String id );
          
-         List<UserDto> getAll();
+         List<User> getAll();
 
          void deleteById( String id );
 
-         UserDto update( User user, String userId );
+         User update( User user, String userId );
      }  
 14. Create an implementation of the ***UserService*** using a HashMap data structure inside.
 15. Make your service implementation ***UserServiceHashMap*** injectable using the ***@Service*** annotation.
@@ -88,7 +85,7 @@
     }
    
     @PutMapping( "/{id}" )
-    public ResponseEntity<UserDto> update( @RequestBody User user, @PathVariable String id ) {
+    public ResponseEntity<UserDto> update( @RequestBody UserDto user, @PathVariable String id ) {
          //TODO implement this method using UserService
          return null;
     }
@@ -100,7 +97,7 @@
     }
   }
  ```
-
+20. Remember to only expose to client relevant fields through Dto classes, not Entity classes (to decouple persistence model from API), you should implement on both User and UserDto mapping methods (toEntity, toDto accordingly).
 20. Build / Run your project.
 21. Download and install [Insomnia](https://insomnia.rest/download) and test ALL the endpoints of your API.
 
@@ -115,25 +112,20 @@
 	- assignedTo
 	- dueDate
 	- createdAt
-3. Create a new package called ***model*** and inside define your ***Task*** model object with at least the following fields:
-	- name
-	- description
-	- status ( TODO, DOING, REVIEW and DONE )
-	- assignedTo
-	- dueDate
+3. Create a new package called ***entities*** and inside define your ***Task*** entity object with the same fields as the dto version:
 4. Create a new package called ***service*** and inside create the following interface:
 	```java
 	public interface TaskService
     {
-        TaskDto create( Task task );
+        Task create( Task task );
 
-        TaskDto findById( String id );
+        Task findById( String id );
         
-        List<TaskDto> getAll();
+        List<Task> getAll();
 
         boolean deleteById( String id );
 
-        TaskDto update( Task task, String id );
+        Task update( Task task, String id );
     }
     ```
 5. Create an implementation of the ***TaskService*** using a ***HashMap*** data structure inside.
